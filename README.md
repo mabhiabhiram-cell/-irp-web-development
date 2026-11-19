@@ -76,4 +76,14 @@ git remote add origin https://github.com/<your-username>/irp-web-development-ass
 git push -u origin main
 ```
 
-Replace `<your-username>` with your GitHub username. Verify the repository and all five files are publicly visible before submitting its URL.
+Replace `<your-username>` with your GitHub username. Verify that the required project files are publicly visible before submitting the repository URL.
+
+## Publish the frontend on Netlify
+
+After pushing the repository to GitHub:
+
+1. In Netlify, choose **Add new site** and **Import an existing project**, then connect the GitHub repository.
+2. Leave the build command empty and set the publish directory to `part-a-responsive-ui`.
+3. Deploy the site and open the generated Netlify URL to verify the home page and hosted images.
+
+Only the frontend folder needs to be deployed; `bank.js` is run locally with Node.js.
