@@ -25,8 +25,11 @@ irp-web-development-assignment/
 │   └── style.css
 ├── part-b-javascript/
 │   └── bank.js
-└── README.md
+├── README.md
+└── PROJECT_GUIDE.md
 ```
+
+See `PROJECT_GUIDE.md` for a fuller explanation of the design, JavaScript examples, development approach, and interview talking points.
 
 ## Open the frontend
 
