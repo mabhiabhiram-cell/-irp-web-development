@@ -16,7 +16,7 @@ function parseAmount(input) {
   if (typeof value === "string") {
     value = value.trim();
     if (value === "") {
-      // Number("") is 0, so reject an empty string before conversion.
+      // Number("") becomes 0, so check for a blank string first.
       throw new Error("Amount cannot be empty.");
     }
   }
@@ -43,8 +43,8 @@ for (const input of amountTests) {
   }
 }
 
-// With +, a string operand triggers concatenation ("5" + 2 is "52");
-// subtraction converts both operands to numbers ("5" - 2 is 3).
+// A string makes + join the values ("5" + 2 is "52").
+// The - operator converts them to numbers first ("5" - 2 is 3).
 console.log('"5" + 2 =', "5" + 2);
 console.log('"5" - 2 =', "5" - 2);
 
@@ -53,7 +53,7 @@ console.log("typeof null:", typeof null);
 
 // PART 2: Scoping & Hoisting
 
-// const keeps the bank name fixed; let allows the transaction counter to change.
+// The bank name stays the same, so use const. The transaction count can change, so use let.
 const BANK_NAME = "JS National Bank";
 let transactionCounter = 0;
 transactionCounter += 1;
@@ -61,11 +61,13 @@ console.log("Bank:", BANK_NAME, "| Transactions:", transactionCounter);
 
 // HOISTING DEMO
 
-// During execution-context creation, declarations are set up; in the execution
-// phase, statements run and assignments take effect in order.
+// First, JavaScript prepares declarations (the creation phase).
+// Then it runs the code in order and applies assignments (the execution phase).
+// var is ready as undefined before its assignment, so this logs undefined.
 console.log("var before declaration:", hoistedValue);
 var hoistedValue = "assigned later";
 
+// let can't be read before its declaration because it's in the temporal dead zone.
 try {
   console.log(temporalValue);
 } catch (error) {
@@ -73,9 +75,10 @@ try {
 }
 let temporalValue = "outside the temporal dead zone";
 
+// Function declarations can be called before the line where they are written.
 announce();
 function announce() {
-  console.log("Function declaration hoisted successfully.");
+  console.log("announce runs before its definition.");
 }
 
 try {
@@ -83,15 +86,15 @@ try {
 } catch (error) {
   console.log("Function expression before assignment:", error.name);
 }
-// The var declaration is hoisted, but its function value is assigned here.
+// notify is hoisted as a var, but gets its function only when this line runs.
 var notify = function () {
-  console.log("Function expression called after assignment.");
+  console.log("notify runs after its function is assigned.");
 };
 notify();
 
-// setTimeout callbacks run after this synchronous loop has finished. var shares
-// one binding, while let creates a fresh lexical binding for each iteration.
-// Thus var callbacks all read 3; let callbacks retain 0, 1, and 2.
+// setTimeout runs after each loop finishes. var reuses one binding for every pass,
+// while let gives each pass its own binding. That's why var logs 3 each time and
+// let keeps the values 0, 1, and 2.
 for (var i = 0; i < 3; i++) {
   setTimeout(function () {
     console.log("var loop:", i);
