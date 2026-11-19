@@ -105,7 +105,7 @@ To inspect the responsive page, open `part-a-responsive-ui/index.html` in Chrome
 
 ## Deployment note
 
-The frontend was deployed to Netlify at <https://irp-web-development-assignment-da780ecc.netlify.app>. A request from this environment received a Netlify Edge Access login response, so check the site's access settings if visitors should be able to open it without signing in.
+The frontend is live at <https://irp-web-development-assignment-da780ecc.netlify.app>. Site-level SSO protection was turned off so visitors can open the page without signing in; the team's account-wide SSO setting was left unchanged. The deployed homepage and stylesheet both returned HTTP 200 during verification.
 
 ## Technologies used
 

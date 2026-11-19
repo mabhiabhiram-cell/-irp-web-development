@@ -83,7 +83,9 @@ Replace `<your-username>` with your GitHub username. Verify that the required pr
 
 ## Publish the frontend on Netlify
 
-After pushing the repository to GitHub:
+The live site is available at <https://irp-web-development-assignment-da780ecc.netlify.app>.
+
+To publish updates after pushing the repository to GitHub:
 
 1. In Netlify, choose **Add new site** and **Import an existing project**, then connect the GitHub repository.
 2. Leave the build command empty and set the publish directory to `part-a-responsive-ui`.
